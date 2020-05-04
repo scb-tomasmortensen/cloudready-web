@@ -8,6 +8,8 @@ namespace cloudready_webapi
 {
     public class Startup
     {
+        readonly string AllowedSpecificOrigins = "_AllowedSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -18,6 +20,15 @@ namespace cloudready_webapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: AllowedSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000", "http://cloudready-web-ui-cloudready.apps.ocp-eu2.prod.nextcle.com/");
+                    });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -34,6 +45,7 @@ namespace cloudready_webapi
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(AllowedSpecificOrigins);
             app.UseMvc();
         }
     }
