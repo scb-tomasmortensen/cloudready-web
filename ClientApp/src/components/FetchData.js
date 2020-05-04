@@ -52,7 +52,7 @@ export class FetchData extends Component {
   }
 
   async populateWeatherData() {
-    const response = await fetch('weatherforecast');
+    const response = await fetch('http://cloudready-webapi-cloudready.apps.ocp-eu2.prod.nextcle.com/weatherforecast');
     const data = await response.json();
     this.setState({ forecasts: data, loading: false });
   }
