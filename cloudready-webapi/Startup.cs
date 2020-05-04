@@ -22,7 +22,7 @@ namespace cloudready_webapi
         {
             services.AddCors(options =>
             {
-                options.AddPolicy(name: AllowedSpecificOrigins,
+                options.AddPolicy(AllowedSpecificOrigins,
                     builder =>
                     {
                         builder.WithOrigins("http://localhost:3000", "http://cloudready-web-ui-cloudready.apps.ocp-eu2.prod.nextcle.com/");
