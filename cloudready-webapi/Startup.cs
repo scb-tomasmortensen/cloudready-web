@@ -25,7 +25,7 @@ namespace cloudready_webapi
                 options.AddPolicy(AllowedSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000", "http://cloudready-web-ui-cloudready.apps.ocp-eu2.prod.nextcle.com/");
+                        builder.WithOrigins("http://localhost:3000", "http://cloudready-web-ui-cloudready.apps.ocp-eu2.prod.nextcle.com");
                     });
             });
 
